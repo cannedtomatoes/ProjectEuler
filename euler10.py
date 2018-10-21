@@ -4,25 +4,50 @@
 from tqdm import tqdm
 import math
 
-def is_prime(n):
-	if n < 2:
-		return False
-	else:
-		for i in range(2, int(math.sqrt(n))):
-			print("n % i = " + str(n % i))
-			if n % i == 0:
-				return False
-				
-		return True
+#0 mean not prime
+#1 means prime
+bools = [0, 0]
+primes = []
 
+#for i in range(2, 2000001):
+#	bools.append(1)
+
+for i in range(2, 2000001):
+	bools.append(1)
+
+t = 2
 sum = 0
-for j in range(2000000):
-	print("Testing " + str(j))
-	if is_prime(j):
-		sum += j
-		print("Adding " + str(j))
-		
-	if j == 10:
-		input()
+working = True
+current_prime_index = 2
 
-print(sum)
+while working:
+	#print("Next prime: " + str(t))
+	j = t
+	primes.append(t)
+	sum += t
+	
+	#set all multiple of t to 0
+	while j < len(bools):
+		j += t
+		try:
+			bools[j] = 0
+		except:
+			pass
+			
+	#Set the next prime to the first number in the list that is not zero
+	k = t + 1
+	still_looking = True
+	while still_looking:
+		#print("Testing bools[" + str(k) + "] = " + str(bools[k]))
+		try:
+			if bools[k] == 1:
+				t = k
+				still_looking = False
+			k += 1
+		except:
+			#print(primes)
+			print(sum)
+			exit()
+	
+	
+	
