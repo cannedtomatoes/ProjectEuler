@@ -56,9 +56,9 @@ def prime_factors(n):
 	return p_facts
 
 
-
-t = 14
-while t < 100000000:
+found = False
+t = 1
+while not found:
 	#print("Consdering " + str(t) + ", " + str(t+1) + " and " + str(t+2) + " and " + str(t+3))
 	
 	pfs = []
@@ -80,7 +80,7 @@ while t < 100000000:
 	
 	if all_distinct(pfs) and len(pf1) == 4 and len(pf2) == 4 and len(pf3) == 4 and len(pf4) == 4:
 		print("Winner with values " + str(t) + ", " + str(t+1) + ", " + str(t+2) + ", and " + str(t+3))
-		input()
+		found = True
 	
 	
 	
